@@ -1,5 +1,25 @@
 class PhotosController < ApplicationController
 
+  def update
+    
+    the_photo_id = params.fetch("a_photo")
+
+    @the_photo = Photo.where({ :id => the_photo_id }).first
+
+    @the_photo.image = params.fetch("input_image")
+    @the_photo.caption = params.fetch("input_caption")
+    
+    @the_photo.save
+    redirect_to("/photos/#{@the_photo.id}", { :notice => "Photo updated successfully." })
+
+    # if @the_photo.valid?
+    #   @the_photo.save
+    #   redirect_to("/photos", { :notice => "Movie created successfully." })
+    # else
+    #   redirect_to("/photos", { :notice => "Movie failed to create successfully." })
+    # end
+  end
+
   def create
     
     @the_photo =  Photo.new
