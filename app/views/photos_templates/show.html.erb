@@ -71,7 +71,7 @@
       Posted
     </th>
   </tr>
-  <% @matching_photo.comments.each do |a_comment|%>
+  <% @matching_photo.comments.order({:created_at => :desc}).each do |a_comment|%>
     <tr>
       <td>
         <%=a_comment.commenter.username%>

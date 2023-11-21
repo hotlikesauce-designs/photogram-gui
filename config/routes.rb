@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get("/delete_photo/:a_photo", { :controller => "photos", :action => "destroy"})
   post("/add_photo", { :controller => "photos", :action => "create"})
   post("/update_photo/:a_photo", { :controller => "photos", :action => "update"})
-
+  post("/add_comment", { :controller => "photos", :action => "add_comment"})
+  
 end
