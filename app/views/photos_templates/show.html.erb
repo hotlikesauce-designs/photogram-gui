@@ -74,7 +74,7 @@
   <% @matching_photo.comments.each do |a_comment|%>
     <tr>
       <td>
-        <%=a_comment.author_id%>
+        <%=a_comment.commenter.username%>
       </td>
 
       <td>
