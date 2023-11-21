@@ -1,5 +1,27 @@
 class PhotosController < ApplicationController
 
+  def create
+    
+    @the_photo =  Photo.new
+
+    @the_photo.image = params.fetch("input_image")
+    @the_photo.caption = params.fetch("input_caption")
+    @the_photo.owner_id = params.fetch("input_owner_id")
+    
+    @the_photo.comments_count = 0
+    @the_photo.likes_count = 0
+    
+    @the_photo.save
+    redirect_to("/photos/#{@the_photo.id}", { :notice => "Photo created successfully." })
+
+    # if @the_photo.valid?
+    #   @the_photo.save
+    #   redirect_to("/photos", { :notice => "Movie created successfully." })
+    # else
+    #   redirect_to("/photos", { :notice => "Movie failed to create successfully." })
+    # end
+  end
+
   def destroy
     the_id = params.fetch("a_photo")
     
