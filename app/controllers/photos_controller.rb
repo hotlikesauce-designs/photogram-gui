@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
     
     matching_photos = Photo.all
 
-    @list_of_photos = matching_photos.order({:updated_at => :asc})
+    @list_of_photos = matching_photos.order({:created_at => :desc})
 
     render({ :template => "photos_templates/index"})
   end
